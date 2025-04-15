@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exercise>
+    <description>
+        <name>Простое сложение</name>
+        <prelude>
+            На вход в stdin выдаётся пара целочисленных значений a и b.
+        </prelude>
+        <task>
+            Сложить выданную пару чисел и записать в stdout результат этой операции.
+        </task>
+    </description>
+
+    <tests>
+        <test>
+            <input>1 2</input>
+            <output>3</output>
+        </test>
+        <test>
+            <input>2 3</input>
+            <output>5</output>
+        </test>
+        <test>
+            <input>3 4</input>
+            <output>7</output>
+        </test>
+        <test>
+            <input>0 0</input>
+            <output>0</output>
+        </test>
+        <test>
+            <input>1073741823 1073741824</input>
+            <output>2147483647</output>
+        </test>
+        <test>
+            <input>-2147483648 2147483647</input>
+            <output>-1</output>
+        </test>
+    </tests>
+</exercise>

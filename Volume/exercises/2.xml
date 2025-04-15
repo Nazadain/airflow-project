@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exercise>
+    <description>
+        <name>Числа Фибоначчи</name>
+        <prelude>
+            На вход в stdin выдаётся одно целочисленное значение — n.
+            n — это порядковый номер элемента в последовательности чисел Фибоначчи.
+        </prelude>
+        <task>
+            Вычислить число Фибоначчи (иначе говоря, найти элемент последовательности)
+            с указанным порядковым номером и записать в stdout результат этой операции.
+        </task>
+    </description>
+
+    <tests>
+        <test>
+            <input>0</input>
+            <output>0</output>
+        </test>
+        <test>
+            <input>1</input>
+            <output>1</output>
+        </test>
+        <test>
+            <input>2</input>
+            <output>1</output>
+        </test>
+        <test>
+            <input>10</input>
+            <output>55</output>
+        </test>
+        <test>
+            <input>46</input>
+            <output>1836311903</output>
+        </test>
+        <test>
+            <input>-1</input>
+            <output>-1</output>
+        </test>
+        <test>
+            <input>-10</input>
+            <output>-55</output>
+        </test>
+        <test>
+            <input>-46</input>
+            <output>-1836311903</output>
+        </test>
+    </tests>
+</exercise>
