@@ -1,6 +1,6 @@
 from airflow.sensors.base import BaseSensorOperator
 from airflow.utils.decorators import apply_defaults
-from confluent_kafka import Consumer, KafkaException
+from confluent_kafka import Consumer, KafkaException, TopicPartition
 
 
 class KafkaMessageSensor(BaseSensorOperator):
@@ -17,21 +17,22 @@ class KafkaMessageSensor(BaseSensorOperator):
         conf = {
             'bootstrap.servers': self.kafka_server,
             'group.id': self.group_id,
-            'auto.offset.reset': 'latest'
+            'auto.offset.reset': 'earliest'
         }
 
         consumer = None
         try:
             consumer = Consumer(conf)
+            tp = TopicPartition(self.topic, 0, 0)
+            consumer.assign([tp])
             consumer.subscribe([self.topic])
+
+
 
             print("Waiting for messages...")
 
-            msg = None
-
             while True:
-                msg = consumer.poll(timeout=5.0)
-                print(f"Received message '{msg}'")
+                msg = consumer.poll(timeout=10.0)
 
                 if msg is None:
                     continue
@@ -56,5 +57,4 @@ class KafkaMessageSensor(BaseSensorOperator):
             print(f"KafkaSensor Error: {e}")
 
         finally:
-            if consumer:
-                consumer.close()
+            consumer.close()
